@@ -1,0 +1,6 @@
+projectKey=FoodOrder
+serverUrl=http://localhost:8888
+serverVersion=7.1.0.11001
+dashboardUrl=http://localhost:8888/dashboard/index/FoodOrder
+ceTaskId=AWgeFDzoliKCH0CkI8WP
+ceTaskUrl=http://localhost:8888/api/ce/task?id=AWgeFDzoliKCH0CkI8WP
