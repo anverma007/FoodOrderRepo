@@ -3,7 +3,7 @@ package com.example.demo.entity;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ItemTest {
 
