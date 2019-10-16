@@ -1,7 +1,7 @@
 pipeline {
   environment {
     registry = "anverma007/docker-test"
-    registryCredential = '42a355b0-2928-4ca4-9e7d-ca1b3d702609'
+    registryCredential = '99898731-1351-4371-9291-632dd3fe0ed5'
   }
   agent any
   stages {
