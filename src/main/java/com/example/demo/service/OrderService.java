@@ -1,5 +1,7 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +59,22 @@ public class OrderService
 		}
 		else
 			return orderList;
+	}
+
+	public List<OrderDetails> findOrders() {
+		List<OrderDetails> orders = order_Repo.findAll();
+		return orders;
+	}
+
+	public List<Customer> findCustomers() {
+		List<Customer> allCustomers = cRepo.findAll();
+		return allCustomers;
+	}
+
+	public List<Item> findAllItems() {
+		
+		List<Item> allItems = item_Repo.findAll();
+		return allItems;
 	}
 	
 	

@@ -1,8 +1,7 @@
 package com.example.demo.controller;
 
-import java.util.HashMap;
 import java.util.InputMismatchException;
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,6 +63,13 @@ public class ControllerOrder
 		
 		return "Order Details are stored";		 
 	}
+	@GetMapping("/all-orders")
+	public ResponseEntity<List<OrderDetails>> findAllOrders(){
+		List<OrderDetails> orderDetails = service.findOrders();
+		
+		return new ResponseEntity<List<OrderDetails>>(orderDetails, HttpStatus.OK);
+	}
+	
 	
 	@GetMapping("/orderById/{orderId}")
 	public ResponseEntity<DTOFoodOrder> orderList(@PathVariable("orderId") int orderId)
@@ -111,6 +117,20 @@ public class ControllerOrder
 			 return new ResponseEntity<DTOFoodOrder>(dto, HttpStatus.OK);	
 		}
 		
+	}
+	@GetMapping("/all-customers")
+	public ResponseEntity<List<Customer>> findAllCustomers(){
+		List<Customer> allCustomers = service.findCustomers();
+		
+		return new ResponseEntity<List<Customer>>(allCustomers, HttpStatus.OK);
+	}
+	
+	@GetMapping("/all-items")
+	public ResponseEntity<List<Item>> findAllItems(){
+		
+		List<Item> allItems = service.findAllItems();
+		
+		return new ResponseEntity<List<Item>>(allItems, HttpStatus.OK);
 	}
 	
 }
