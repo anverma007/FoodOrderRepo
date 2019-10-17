@@ -1,3 +1,3 @@
-FROM docker/whalesay:latest
-RUN apt-get -y update && apt-get install -y fortunes
-CMD /usr/games/fortune -a | cowsay
+FROM java:8
+EXPOSE 9999
+ENTRYPOINT ["java", "-war", "FoodOrder-0.0.1-SNAPSHOT.war"]
