@@ -1,3 +1,14 @@
-FROM docker/whalesay:latest
-RUN apt-get -y update && apt-get install -y fortunes
-CMD /usr/games/fortune -a | cowsay
+
+FROM maven:3.5-jdk-8
+
+RUN mkdir -p /deploy/application
+
+VOLUME ["/deploy/application"]
+
+WORKDIR /deploy/application
+
+ADD . .
+
+ENTRYPOINT ["mvn","clean","package"]
+
+
