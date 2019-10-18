@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.DTOFoodOrder;
@@ -21,6 +22,7 @@ import com.example.demo.exception.NullPointerServiceException;
 import com.example.demo.service.OrderService;
 
 @RestController
+@RequestMapping("order")
 public class ControllerOrder 
 {
 	@Autowired
@@ -29,40 +31,18 @@ public class ControllerOrder
 	DTOFoodOrder dto=new DTOFoodOrder();
 	
 	
-	@GetMapping("/show")
-	public String show()
-	{
-		return "Hello";
-	}
-	
-	@PostMapping("/storeCustomer")
-	public ResponseEntity<Customer> registerCustomer(@RequestBody Customer customer)
-	{
-		Customer c=null;
-		try {
-			c=service.insertData(customer);			
-		} 
-		catch (CustomerRegistrationFailedException e) 
-		{
-			System.out.println(e); 
-		}	
-		return new ResponseEntity<Customer>(c, HttpStatus.OK);
-	}
-	
-	@PostMapping("/storeItem")
-	public ResponseEntity<String> saveItem(@RequestBody Item item) 
-	{
-		service.insertItem(item);
-		return new ResponseEntity<String>("Item is inserted", HttpStatus.OK);
+	@GetMapping("/")
+	public String show() {	
+		return "Hello, Welcome to FoodOrder (From OrderCart)";
 	}
 	
 	@PostMapping("/takeOrder")
-	public String placeOrder(@RequestBody OrderDetails order)
-	{
+	public String placeOrder(@RequestBody OrderDetails order){
 		service.insertOrder(order);
 		
 		return "Order Details are stored";		 
 	}
+	
 	@GetMapping("/all-orders")
 	public ResponseEntity<List<OrderDetails>> findAllOrders(){
 		List<OrderDetails> orderDetails = service.findOrders();
@@ -118,19 +98,4 @@ public class ControllerOrder
 		}
 		
 	}
-	@GetMapping("/all-customers")
-	public ResponseEntity<List<Customer>> findAllCustomers(){
-		List<Customer> allCustomers = service.findCustomers();
-		
-		return new ResponseEntity<List<Customer>>(allCustomers, HttpStatus.OK);
-	}
-	
-	@GetMapping("/all-items")
-	public ResponseEntity<List<Item>> findAllItems(){
-		
-		List<Item> allItems = service.findAllItems();
-		
-		return new ResponseEntity<List<Item>>(allItems, HttpStatus.OK);
-	}
-	
 }

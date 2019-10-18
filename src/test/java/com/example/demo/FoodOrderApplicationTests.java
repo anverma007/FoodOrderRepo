@@ -17,10 +17,8 @@ public class FoodOrderApplicationTests
 	ControllerOrder cntrl=new ControllerOrder();
 	
 	@Test
-	public void contextCheck() 
-	{	
-		assertEquals("Hello", cntrl.show());
+	public void contextCheck() 	{	
+		assertEquals("Hello, Welcome to FoodOrder (From OrderCart)", cntrl.show());
 	}
-
 }
 
