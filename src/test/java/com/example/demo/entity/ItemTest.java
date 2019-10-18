@@ -31,6 +31,6 @@ public class ItemTest {
 	@Test
 	public void getLocationTest() {
 		double price = item.getPrice();
-		assertNotNull(null);
+		assertNotNull(price);
 	}
 }
