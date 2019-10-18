@@ -1,6 +1,6 @@
 node {
 
-   pipeline {
+  pipeline {
   environment {
     registry = "anverma007/docker-test"
     registryCredential = 'bcf3dccf-8877-42e2-949e-dbf787c7f5fc'
