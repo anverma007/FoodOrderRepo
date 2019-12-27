@@ -1,0 +1,23 @@
+version: '2'
+
+services:
+  foodorder:
+    image: food-order
+    build: .
+    ports:
+      - '8888:8888'
+    networks:
+      - food-order-mysql
+    depends_on:
+      - mysqldb
+
+  mysqldb:
+    image: mysql:5
+    networks:
+      - food-order-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=food_order
+
+networks:
+  food-order-mysql:
